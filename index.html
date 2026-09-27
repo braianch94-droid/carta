@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#efe3d3">
+<title>Llegó una carta ♥</title>
+<meta name="description" content="Abrila cuando estés tranqui.">
+<meta property="og:title" content="Llegó una carta ♥">
+<meta property="og:description" content="Abrila cuando estés tranqui.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://braianch94-droid.github.io/carta/">
+<meta property="og:image" content="https://braianch94-droid.github.io/carta/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Un sobre cerrado con un sello de corazón que dice Para mi amor">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%237a1f2b' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+/* ===== Sistema de diseño ===== */
+:root{
+  /* Color */
+  --bg:#efe3d3; --bg-2:#e4d0b8; --bg-glow:#f7eee3;
+  --paper:#fcf8f1; --paper-hi:#fffcf6; --paper-lo:#f6eee2;
+  --photo-paper:#fffdf8; --photo-empty:#eadfce;
+  --ink:#3b2a26; --ink-soft:#6a544c;
+  --wine:#7a1f2b; --wine-2:#a0303f; --wine-deep:#561019; --wine-hi:#b23a4a;
+  --blush:#f6dcd6; --blush-2:#fbe7e3;
+  --rose:#d9a5a0; --tape:rgba(217,165,160,.55);
+  --env-back:#d6b996; --env-side:#eedcc3; --env-side-2:#efdcc4; --env-bottom:#f5e7d3; --env-flap:#e8d1b1; --env-flap-2:#dfc5a1;
+  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .23 0 0 0 0 .16 0 0 0 0 .15 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  /* Tipografía: 3 familias, 8 escalones */
+  --ff-serif:"Cormorant Garamond",Georgia,serif;
+  --ff-hand:"Caveat",cursive;
+  --ff-script:"Great Vibes",cursive;
+  --fs-xs:12px;
+  --fs-sm:16px;
+  --fs-md:20px;
+  --fs-hand-sm:22px;
+  --fs-lg:24px;
+  --fs-xl:40px;
+  --fs-title:clamp(40px,11vw,52px);
+  --fs-hero:clamp(52px,15vw,72px);
+
+  /* Espaciado: grilla de 4 */
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px; --sp-7:48px; --sp-8:72px;
+
+  /* Forma y elevación */
+  --r-paper:3px; --r-card:12px; --r-pill:999px;
+  --sh-sm:0 10px 20px -12px rgba(59,42,38,.5),0 1px 2px rgba(59,42,38,.08);
+  --sh-md:0 18px 30px -16px rgba(59,42,38,.55),0 1px 3px rgba(59,42,38,.12);
+  --sh-lg:0 30px 50px -28px rgba(59,42,38,.55),0 2px 6px rgba(59,42,38,.08);
+  --sh-wine:0 16px 30px -12px rgba(122,31,43,.7);
+
+  /* Movimiento: las entradas son lentas a propósito; las microinteracciones, rápidas */
+  --ease-out:cubic-bezier(.2,.8,.2,1);
+  --ease-io:cubic-bezier(.45,0,.2,1);
+  --t-micro:180ms;
+}
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0;padding:0}
+[hidden]{display:none!important}
+html{color-scheme:light;-webkit-text-size-adjust:100%}
+body{
+  min-height:100vh;min-height:100svh;
+  color:var(--ink);background:var(--bg);
+  font-family:var(--ff-serif);
+  overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    var(--noise),
+    radial-gradient(120% 70% at 50% 0%,var(--bg-glow) 0%,rgba(247,238,227,0) 60%),
+    radial-gradient(110% 60% at 50% 100%,var(--bg-2) 0%,rgba(228,208,184,0) 70%),
+    var(--bg);
+}
+body.locked{overflow:hidden}
+button{
+  font:inherit;color:inherit;background:none;border:0;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  transition:scale var(--t-micro) var(--ease-out);
+}
+button:focus-visible{outline:2px dashed var(--wine);outline-offset:4px}
+svg{display:block}
+[data-heart]{display:inline-flex}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Sobre ---------- */
+.intro{
+  position:fixed;inset:0;z-index:10;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:var(--sp-5) var(--sp-4);text-align:center;
+  transition:opacity 1s var(--ease-out),visibility 1s;
+}
+.intro.gone{opacity:0;visibility:hidden;pointer-events:none}
+.ambient{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1}
+.amb{position:absolute;bottom:-30px;display:block;color:var(--rose);animation:floatUp linear infinite}
+.amb svg{width:100%;height:100%}
+@keyframes floatUp{to{transform:translateY(calc(-100vh - 60px)) rotate(25deg)}}
+.intro-kicker,.intro-title{transition:opacity .5s var(--ease-out),transform .5s var(--ease-out)}
+.intro-kicker{font-style:italic;font-size:var(--fs-md);color:var(--ink-soft);letter-spacing:.02em}
+.intro-title{
+  font-family:var(--ff-script);font-weight:400;
+  font-size:var(--fs-hero);line-height:1.15;color:var(--wine);
+  margin-bottom:var(--sp-6);
+}
+.intro-hint{margin-top:var(--sp-7);font-style:italic;font-size:var(--fs-md);color:var(--ink-soft);animation:hint 2.6s ease-in-out infinite}
+@keyframes hint{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+.intro.opening .intro-kicker,.intro.opening .intro-title{opacity:0;transform:translateY(-12px)}
+.intro.opening .intro-hint{animation:none;opacity:0;transition:opacity .4s}
+
+.envelope{
+  display:block;width:min(82vw,340px);
+  animation:bob 4.5s ease-in-out infinite;
+  filter:drop-shadow(0 22px 22px rgba(59,42,38,.25));
+}
+.envelope:focus-visible{outline-offset:10px;border-radius:10px}
+.envelope.open{animation-play-state:paused}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.env{position:relative;display:block;width:100%;aspect-ratio:3/2;perspective:900px}
+.env>span,.env-front i{position:absolute;display:block}
+.env-back{inset:0;background:var(--env-back);border-radius:6px}
+.env-letter{
+  left:6%;right:6%;top:7%;height:86%;z-index:2;
+  display:flex;justify-content:center;padding-top:8%;
+  background:var(--paper);border-radius:var(--r-paper);color:var(--wine);
+  box-shadow:0 1px 4px rgba(0,0,0,.1);
+  transition:transform 1.1s var(--ease-out) .55s;
+}
+.env-letter svg{width:24px;height:24px}
+.env-front{inset:0;z-index:3;border-radius:6px;overflow:hidden}
+.env-front .l{inset:0;background:var(--env-side);clip-path:polygon(0 0,51% 56%,0 100%)}
+.env-front .r{inset:0;background:var(--env-side);clip-path:polygon(100% 0,49% 56%,100% 100%)}
+.env-front .b{inset:0;background:linear-gradient(to top,var(--env-bottom),var(--env-side-2));clip-path:polygon(0 100%,50% 46%,100% 100%)}
+.env-flap{
+  left:0;right:0;top:0;height:60%;z-index:4;
+  background:linear-gradient(to bottom,var(--env-flap-2),var(--env-flap));
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:50% 0;
+  transition:transform .75s var(--ease-io) .15s,z-index 0s .5s;
+}
+.seal{
+  left:50%;top:60%;width:52px;height:52px;margin:-26px 0 0 -26px;z-index:5;
+  border-radius:50%;display:grid!important;place-items:center;color:var(--blush);
+  background:radial-gradient(circle at 35% 30%,var(--wine-hi),var(--wine) 55%,var(--wine-deep));
+  box-shadow:0 3px 6px rgba(0,0,0,.28),inset 0 -3px 6px rgba(0,0,0,.28),inset 0 2px 3px rgba(255,255,255,.22);
+  transition:transform .35s var(--ease-out),opacity .35s var(--ease-out);
+}
+.seal svg{width:22px;height:22px}
+.envelope.open .seal{transform:scale(.4);opacity:0}
+.envelope.open .env-flap{transform:rotateX(180deg);z-index:1}
+.envelope.open .env-letter{transform:translateY(-62%)}
+
+/* ---------- Carta ---------- */
+.main{opacity:0;visibility:hidden;transition:opacity .8s var(--ease-out) .1s}
+.main.show{opacity:1;visibility:visible}
+.letter-wrap{
+  min-height:100vh;min-height:100svh;
+  padding:calc(var(--sp-7) + env(safe-area-inset-top)) var(--sp-4) var(--sp-7);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.paper{
+  position:relative;width:100%;max-width:520px;
+  padding:var(--sp-7) var(--sp-5);
+  background:var(--noise),linear-gradient(170deg,var(--paper-hi),var(--paper) 60%,var(--paper-lo));
+  border-radius:var(--r-paper);
+  box-shadow:var(--sh-lg);
+  transform:rotate(-.5deg);cursor:pointer;
+}
+.paper.done{cursor:default}
+.main.show .paper{animation:paperIn 1.1s var(--ease-out) both}
+@keyframes paperIn{from{opacity:0;transform:translateY(48px) rotate(-3deg) scale(.95)}to{opacity:1;transform:rotate(-.5deg)}}
+.paper::before{
+  content:"";position:absolute;top:-13px;left:50%;width:112px;height:28px;margin-left:-56px;
+  background:var(--tape);transform:rotate(-3deg);
+  box-shadow:0 1px 2px rgba(0,0,0,.06);
+}
+.greeting{font-family:var(--ff-script);font-weight:400;font-size:var(--fs-xl);line-height:1.2;color:var(--wine);margin-bottom:var(--sp-3)}
+.letter-body{font-family:var(--ff-hand);font-size:var(--fs-lg);line-height:1.4;color:var(--ink)}
+.letter-body p+p{margin-top:.65em}
+.letter-body .rest{visibility:hidden}
+.caret{display:inline-block;width:2px;height:1em;margin-right:-2px;vertical-align:-.12em;background:var(--wine);animation:blink .9s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.signature{
+  font-family:var(--ff-script);font-size:var(--fs-xl);line-height:1.2;color:var(--wine);
+  text-align:right;margin-top:var(--sp-5);
+  opacity:0;transform:translateY(8px);transition:opacity 1s var(--ease-out),transform 1s var(--ease-out);
+}
+.signature.on{opacity:1;transform:none}
+.skip-hint{
+  position:fixed;left:50%;bottom:calc(var(--sp-4) + env(safe-area-inset-bottom));z-index:15;
+  transform:translateX(-50%);white-space:nowrap;
+  display:flex;align-items:center;min-height:44px;padding:0 var(--sp-5);border-radius:var(--r-pill);
+  background:rgba(252,248,241,.92);border:1px solid rgba(122,31,43,.15);
+  box-shadow:var(--sh-sm);
+  font-style:italic;font-size:var(--fs-sm);color:var(--ink-soft);
+  opacity:0;visibility:hidden;
+  transition:opacity .5s var(--ease-out),visibility .5s,scale var(--t-micro) var(--ease-out);
+}
+.skip-hint.on{opacity:1;visibility:visible}
+.scroll-hint{
+  margin-top:var(--sp-6);display:flex;flex-direction:column;align-items:center;gap:var(--sp-1);
+  font-style:italic;font-size:var(--fs-sm);color:var(--ink-soft);
+  opacity:0;transition:opacity 1s var(--ease-out);
+}
+.scroll-hint.on{opacity:1}
+.scroll-hint svg{width:24px;height:24px;animation:nudge 1.8s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ---------- Secciones ---------- */
+.block{padding:var(--sp-8) var(--sp-4);text-align:center}
+.sec-title{font-family:var(--ff-script);font-weight:400;font-size:var(--fs-title);line-height:1.15;color:var(--wine)}
+.orn{display:flex;align-items:center;justify-content:center;gap:var(--sp-3);color:var(--rose);margin:var(--sp-2) auto var(--sp-7);max-width:220px}
+.orn::before,.orn::after{content:"";flex:1;height:1px;background:currentColor;opacity:.7}
+.orn svg{width:16px;height:16px}
+.reveal{
+  opacity:0;transform:translateY(16px);
+  transition:opacity .9s var(--ease-out),transform .9s var(--ease-out),scale var(--t-micro) var(--ease-out);
+}
+.reveal.visible{opacity:1;transform:none}
+
+/* Fotos */
+.gallery{display:flex;flex-direction:column;align-items:center;gap:var(--sp-7);max-width:520px;margin:0 auto}
+.polaroid{
+  position:relative;display:block;width:min(76%,310px);
+  padding:var(--sp-3) var(--sp-3) 0;background:var(--photo-paper);text-align:center;
+  box-shadow:var(--sh-md);
+  --x:0%;
+}
+.polaroid:nth-child(odd){--x:-6%}
+.polaroid:nth-child(even){--x:6%}
+.polaroid.wide{width:min(94%,460px);--x:0%}
+.polaroid.reveal{opacity:0;transform:translateX(var(--x)) rotate(var(--r)) translateY(32px)}
+.polaroid.reveal.visible{opacity:1;transform:translateX(var(--x)) rotate(var(--r))}
+.polaroid::before{
+  content:"";position:absolute;z-index:1;top:-11px;left:50%;width:70px;height:22px;margin-left:-35px;
+  background:var(--tape);transform:rotate(-4deg);
+}
+.polaroid:nth-child(even)::before{left:-8px;top:6px;margin-left:0;transform:rotate(-38deg)}
+.ph{position:relative;display:block;overflow:hidden;background:var(--photo-empty)}
+.ph img,.ph video{display:block;width:100%;height:100%;object-fit:cover}
+.live{
+  position:absolute;top:var(--sp-2);left:var(--sp-2);display:flex;align-items:center;gap:var(--sp-1);
+  padding:var(--sp-1) var(--sp-2);border-radius:var(--r-pill);
+  background:rgba(255,253,248,.85);color:var(--ink);
+  font:600 var(--fs-xs)/1 system-ui,sans-serif;letter-spacing:.06em;
+}
+.live::before{content:"";width:7px;height:7px;border-radius:50%;border:1.5px solid currentColor;box-shadow:0 0 0 2px rgba(255,253,248,.85),0 0 0 3.5px currentColor}
+.cap{display:flex;align-items:center;justify-content:center;min-height:3.2em;padding:var(--sp-3) var(--sp-2) var(--sp-4);font-family:var(--ff-hand);font-size:var(--fs-hand-sm);line-height:1.1}
+
+/* Contador */
+.counter-lead{font-style:italic;font-size:var(--fs-md);color:var(--ink-soft);margin-bottom:var(--sp-5)}
+.counter{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--sp-3);max-width:420px;margin:0 auto}
+.unit{
+  flex:0 0 calc((100% - 2 * var(--sp-3))/3);
+  padding:var(--sp-4) var(--sp-1) var(--sp-3);border-radius:var(--r-card);
+  background:var(--noise),var(--paper);
+  box-shadow:var(--sh-sm);
+}
+.unit b{display:block;font-weight:600;font-size:var(--fs-xl);line-height:1;color:var(--wine);font-variant-numeric:lining-nums tabular-nums}
+.unit span{display:block;margin-top:var(--sp-2);font-size:var(--fs-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.counter-foot{margin-top:var(--sp-5);font-style:italic;font-size:var(--fs-md);color:var(--ink-soft)}
+.counter-foot b{font-style:normal;font-weight:600;color:var(--wine);font-variant-numeric:lining-nums}
+
+/* Cierre */
+.final{padding-bottom:calc(var(--sp-8) + var(--sp-7))}
+.final-big{font-family:var(--ff-script);font-size:var(--fs-title);line-height:1.2;color:var(--wine);max-width:360px;margin:0 auto var(--sp-7);text-wrap:balance}
+.heart-btn{
+  width:88px;height:88px;margin:0 auto;border-radius:50%;
+  display:grid;place-items:center;color:var(--blush-2);
+  background:radial-gradient(circle at 35% 30%,var(--wine-2),var(--wine) 60%,var(--wine-deep));
+  box-shadow:var(--sh-wine);
+}
+.heart-btn.reveal.visible{animation:beat 1.8s ease-in-out infinite}
+.heart-btn svg{width:40px;height:40px}
+@keyframes beat{0%,100%{transform:scale(1)}14%{transform:scale(1.12)}28%{transform:scale(1)}42%{transform:scale(1.07)}56%{transform:scale(1)}}
+.heart-label{margin-top:var(--sp-4);font-style:italic;font-size:var(--fs-sm);color:var(--ink-soft)}
+.secret{
+  max-width:360px;margin:var(--sp-6) auto 0;
+  font-family:var(--ff-hand);font-size:var(--fs-lg);line-height:1.3;
+  opacity:0;transform:translateY(8px);transition:opacity 1.2s var(--ease-out),transform 1.2s var(--ease-out);
+}
+.secret.on{opacity:1;transform:none}
+
+/* Corazones que caen */
+.hearts-layer{position:fixed;inset:0;z-index:40;pointer-events:none;overflow:hidden}
+.fall{position:absolute;top:-48px;display:block;animation-name:fall;animation-timing-function:linear;animation-fill-mode:forwards}
+.fall svg{width:100%;height:100%}
+@keyframes fall{to{transform:translate3d(var(--dx),calc(100vh + 90px),0) rotate(var(--rot))}}
+
+/* Foto grande */
+.lightbox{
+  position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;
+  padding:var(--sp-5) var(--sp-4);background:rgba(40,24,22,.84);
+  opacity:0;transition:opacity 220ms var(--ease-out);cursor:zoom-out;
+}
+.lightbox.on{opacity:1}
+.lightbox figure{
+  background:var(--photo-paper);padding:var(--sp-3) var(--sp-3) 0;max-width:min(92vw,560px);
+  box-shadow:var(--sh-lg);
+  transform:scale(.94) rotate(-1deg);transition:transform 220ms var(--ease-out);
+}
+.lightbox.on figure{transform:none}
+.lightbox img,.lightbox video{display:block;max-width:100%;max-height:74vh;margin:0 auto}
+.lightbox figcaption{font-family:var(--ff-hand);font-size:var(--fs-lg);text-align:center;padding:var(--sp-3) var(--sp-2) var(--sp-4)}
+
+/* Música */
+.music{
+  position:fixed;right:var(--sp-4);bottom:calc(var(--sp-4) + env(safe-area-inset-bottom));z-index:20;
+  width:48px;height:48px;border-radius:50%;
+  display:grid;place-items:center;color:var(--wine);
+  background:rgba(252,248,241,.92);border:1px solid rgba(122,31,43,.18);
+  box-shadow:var(--sh-sm);
+}
+.bars{display:flex;align-items:flex-end;gap:3px;height:16px}
+.bars i{display:block;width:3px;height:100%;border-radius:2px;background:currentColor;transform-origin:bottom;animation:eq 1s ease-in-out infinite}
+.bars i:nth-child(2){animation-delay:-.4s}
+.bars i:nth-child(3){animation-delay:-.7s}
+.bars i:nth-child(4){animation-delay:-.2s}
+.music.paused .bars i{animation-play-state:paused;transform:scaleY(.3)}
+@keyframes eq{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+
+/* ---------- Estados: hover (escritorio) y apretado (celular) ---------- */
+@media (hover:hover){
+  .envelope:hover,.polaroid:hover{scale:1.02}
+  .heart-btn:hover{scale:1.06}
+  .skip-hint:hover,.music:hover{background:var(--paper)}
+}
+button:active{scale:.96}
+.envelope:active,.polaroid:active{scale:.98}
+.heart-btn:active{scale:.92}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.2s!important}
+  .reveal,.polaroid.reveal{transform:translateX(var(--x,0)) rotate(var(--r,0))}
+}
+</style>
+</head>
+<body class="locked">
+<div class="hearts-layer" id="heartsLayer" aria-hidden="true"></div>
+
+<section class="intro" id="intro">
+  <div class="ambient" id="ambient" aria-hidden="true"></div>
+  <p class="intro-kicker" id="introKicker"></p>
+  <h1 class="intro-title" id="introTitle"></h1>
+  <button class="envelope" id="envelope" type="button" aria-label="Abrir la carta">
+    <span class="env">
+      <span class="env-back"></span>
+      <span class="env-letter"><span data-heart></span></span>
+      <span class="env-front"><i class="l"></i><i class="r"></i><i class="b"></i></span>
+      <span class="env-flap"></span>
+      <span class="seal" data-heart></span>
+    </span>
+  </button>
+  <p class="intro-hint">Tocá el sobre para abrirlo</p>
+</section>
+
+<main class="main" id="main">
+  <section class="letter-wrap">
+    <article class="paper" id="paper">
+      <h2 class="greeting" id="greeting"></h2>
+      <p class="sr-only" id="srText"></p>
+      <div class="letter-body" id="letterBody" aria-hidden="true"></div>
+      <p class="signature" id="signature"></p>
+    </article>
+    <p class="scroll-hint" id="scrollHint" aria-hidden="true">Seguí bajando
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    </p>
+  </section>
+
+  <section class="block" id="gallerySec">
+    <h2 class="sec-title reveal" id="galleryTitle"></h2>
+    <div class="orn reveal" aria-hidden="true"><span data-heart></span></div>
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <section class="block" id="counterSec">
+    <p class="counter-lead reveal" id="counterLead"></p>
+    <div class="counter reveal">
+      <div class="unit" data-u="y"><b>0</b><span></span></div>
+      <div class="unit" data-u="mo"><b>0</b><span></span></div>
+      <div class="unit" data-u="d"><b>0</b><span></span></div>
+      <div class="unit" data-u="h"><b>0</b><span></span></div>
+      <div class="unit" data-u="mi"><b>0</b><span></span></div>
+      <div class="unit" data-u="s"><b>0</b><span></span></div>
+    </div>
+    <p class="counter-foot reveal">Son <b id="totalDays">0</b> días. Y contando.</p>
+  </section>
+
+  <section class="block final">
+    <p class="final-big reveal" id="finalBig"></p>
+    <button class="heart-btn reveal" id="heartBtn" type="button" aria-label="Tocá el corazón"><span data-heart></span></button>
+    <p class="heart-label reveal">Tocá el corazón</p>
+    <p class="secret" id="secret" aria-live="polite"></p>
+  </section>
+</main>
+
+<button class="skip-hint" id="skipHint" type="button">Tocá para leer todo</button>
+<div class="lightbox" id="lightbox" hidden>
+  <figure><div id="lbMedia"></div><figcaption id="lbCap"></figcaption></figure>
+</div>
+<button class="music paused" id="music" type="button" aria-label="Poner la música" hidden><span class="bars"><i></i><i></i><i></i><i></i></span></button>
+<audio id="audio" loop preload="auto"></audio>
+
+<script>
+/* ============================ EDITÁ ACÁ ============================ */
+const CARTA = {
+  // Pantalla del sobre
+  aviso: "Llegó una carta",
+  para: "Para mi amor",
+
+  // La carta (cada línea del array es un párrafo)
+  saludo: "Hola, mi amor:",
+  mensaje: [
+    "Hoy me puse a recordar cuánto pasa el tiempo, todo lo que crecimos y todo lo que hicimos en este tiempo.",
+    "Vivimos cosas buenas y malas, pero muchísimas más buenas e increíbles. Y siempre juntos, siempre pensando para adelante.",
+    "Desde ese primer viaje, esa escapada que fue fantástica, hasta lugares increíbles como Aruba o el Viejo Molino. ¿Cómo no pensar en los próximos viajes?",
+    "Pero hoy te extraño, y te extraño muchísimo. Te extraño a vos, a tu risa, a esos abrazos que me acomodan el alma cuando el día viene pesado.",
+    "Hay un momento en que sentís que lo tenés todo. Y porque sí, yo te veo y pienso: “lo tengo todo, ella me hace feliz”.",
+    "Me hace feliz un buen día, amor, un cómo fue tu día, un cómo estás. Esos son los detalles que me hacen feliz. Saber que voy a cocinarte, porque me encanta hacerlo. Me encanta pasar tiempo con vos.",
+    "Te amo."
+  ],
+  firma: "Braian",
+
+  // Fotos (carpeta "fotos"). w/h = tamaño de la imagen, para que no salten al cargar.
+  // Para una foto con movimiento: video = el mp4, src = la foto quieta de respaldo.
+  tituloFotos: "Nosotros",
+  fotos: [
+    { src: "fotos/hamaca.jpg", w: 720, h: 1280, frase: "Esa risa" },
+    { src: "fotos/ruta.jpg", w: 1280, h: 720, frase: "Copiloto oficial" },
+    { src: "fotos/playa.jpg", video: "fotos/playa.mp4", w: 576, h: 1024, frase: "Mar, sol y vos" },
+    { src: "fotos/selfie.jpg", w: 720, h: 1280, frase: "Mi lugar favorito: al lado tuyo" },
+    { src: "fotos/te-amo.jpg", w: 720, h: 1280, frase: "Lo dice todo" }
+  ],
+
+  // Contador: fecha en que empezaron (AAAA-MM-DD). null para ocultarlo.
+  fechaInicio: "2025-06-03",
+  contadorTexto: "Desde aquel 3 de junio pasaron",
+
+  // Música de fondo: suena cuando abre el sobre. Poné el mp3 en la carpeta "musica" con este nombre.
+  cancion: "musica/eres.mp3", // Eres, Café Tacvba
+
+  // Cierre
+  cierreGrande: "Con vos la vida es mejor",
+  secreto: "Guardá este link. Cuando el día venga pesado, volvé acá: te dejé un abrazo guardado."
+};
+/* =================================================================== */
+
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const HEART = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
+  const COLORS = ["#7a1f2b", "#a0303f", "#c2626b", "#d9a5a0", "#e9bdb7"];
+
+  // Textos
+  $("introKicker").textContent = CARTA.aviso;
+  $("introTitle").textContent = CARTA.para;
+  $("greeting").textContent = CARTA.saludo;
+  $("signature").textContent = CARTA.firma;
+  $("srText").textContent = CARTA.mensaje.join(" ") + " " + CARTA.firma;
+  $("galleryTitle").textContent = CARTA.tituloFotos;
+  $("finalBig").textContent = CARTA.cierreGrande;
+  document.querySelectorAll("[data-heart]").forEach((el) => { el.innerHTML = HEART; });
+
+  // Corazones flotando detrás del sobre
+  if (!reduce) {
+    const amb = $("ambient");
+    for (let i = 0; i < 14; i++) {
+      const h = document.createElement("span");
+      const s = 8 + Math.random() * 14;
+      h.className = "amb";
+      h.innerHTML = HEART;
+      h.style.cssText = `left:${Math.random() * 100}%;width:${s}px;height:${s}px;opacity:${(0.15 + Math.random() * 0.3).toFixed(2)};animation-duration:${(10 + Math.random() * 8).toFixed(1)}s;animation-delay:${(-Math.random() * 18).toFixed(1)}s`;
+      amb.appendChild(h);
+    }
+  }
+
+  // Lluvia de corazones
+  function burst(n) {
+    const layer = $("heartsLayer");
+    for (let i = 0; i < n; i++) {
+      const h = document.createElement("span");
+      const s = 14 + Math.random() * 24;
+      h.className = "fall";
+      h.innerHTML = HEART;
+      h.style.cssText = `left:${(Math.random() * 100).toFixed(1)}%;width:${s}px;height:${s}px;color:${COLORS[i % COLORS.length]};animation-duration:${(3.8 + Math.random() * 3).toFixed(2)}s;animation-delay:${(Math.random() * 1.6).toFixed(2)}s;--dx:${Math.round((Math.random() * 2 - 1) * 70)}px;--rot:${Math.round((Math.random() * 2 - 1) * 50)}deg`;
+      h.addEventListener("animationend", () => h.remove());
+      layer.appendChild(h);
+    }
+  }
+
+  // Música
+  const audio = $("audio");
+  const music = $("music");
+  // Si el mp3 no está (o no se puede leer), la página sigue igual y sin botón de música
+  let audioOk = Boolean(CARTA.cancion);
+  audio.addEventListener("error", () => { audioOk = false; music.hidden = true; });
+  if (CARTA.cancion) audio.src = CARTA.cancion;
+  function syncMusic() {
+    const playing = !audio.paused;
+    music.classList.toggle("paused", !playing);
+    music.setAttribute("aria-label", playing ? "Pausar la música" : "Poner la música");
+  }
+  music.addEventListener("click", () => { if (audio.paused) audio.play().catch(() => {}); else audio.pause(); });
+  audio.addEventListener("play", syncMusic);
+  audio.addEventListener("pause", syncMusic);
+
+  // Carta: el texto completo ocupa su lugar desde el principio y se va revelando
+  const parts = CARTA.mensaje.map((text) => {
+    const p = document.createElement("p");
+    const shown = document.createElement("span");
+    const rest = document.createElement("span");
+    rest.className = "rest";
+    rest.textContent = text;
+    p.append(shown, rest);
+    $("letterBody").appendChild(p);
+    return { text, p, shown, rest };
+  });
+  const caret = document.createElement("span");
+  caret.className = "caret";
+  let finishTyping = null;
+  let skipRequested = false;
+
+  function startTyping() {
+    let pi = 0, ci = 0, timer = 0, finished = false;
+    function finish() {
+      if (finished) return;
+      finished = true;
+      clearTimeout(timer);
+      parts.forEach((x) => { x.shown.textContent = x.text; x.rest.textContent = ""; });
+      caret.remove();
+      $("paper").classList.add("done");
+      $("skipHint").classList.remove("on");
+      $("signature").classList.add("on");
+      setTimeout(() => $("scrollHint").classList.add("on"), 900);
+    }
+    function step() {
+      const x = parts[pi];
+      if (!x) return finish();
+      ci++;
+      x.shown.textContent = x.text.slice(0, ci);
+      x.rest.textContent = x.text.slice(ci);
+      x.p.insertBefore(caret, x.rest);
+      const ch = x.text[ci - 1] || "";
+      let d = 14 + Math.random() * 22;
+      if (ch && ",;:".includes(ch)) d += 120;
+      if (ch && ".!?…".includes(ch)) d += 260;
+      if (ci >= x.text.length) { pi++; ci = 0; d += 380; }
+      // Acompaña la escritura bajando la pantalla cuando el texto llega abajo
+      const bottom = caret.getBoundingClientRect().bottom;
+      if (bottom > window.innerHeight * 0.78) window.scrollBy({ top: bottom - window.innerHeight * 0.55, behavior: "smooth" });
+      timer = setTimeout(step, d);
+    }
+    finishTyping = finish;
+    if (reduce || skipRequested) return finish();
+    $("skipHint").classList.add("on");
+    step();
+  }
+  // Si toca la carta antes de que empiece a escribirse, se muestra entera
+  const skip = () => { if (finishTyping) finishTyping(); else skipRequested = true; };
+  $("paper").addEventListener("click", skip);
+  $("skipHint").addEventListener("click", skip);
+
+  // Abrir el sobre
+  let opened = false;
+  $("envelope").addEventListener("click", () => {
+    if (opened) return;
+    opened = true;
+    $("intro").classList.add("opening");
+    $("envelope").classList.add("open");
+    if (audioOk) { music.hidden = false; audio.play().catch(() => {}); }
+    setTimeout(() => {
+      $("intro").classList.add("gone");
+      document.body.classList.remove("locked");
+      window.scrollTo(0, 0);
+      $("main").classList.add("show");
+      burst(reduce ? 6 : 18);
+      setTimeout(startTyping, reduce ? 0 : 900);
+    }, reduce ? 250 : 1750);
+  });
+
+  // Fotos
+  const videos = [];
+  function makeImg(f) {
+    const img = new Image();
+    img.src = f.src;
+    img.alt = f.frase || "Foto";
+    img.decoding = "async";
+    if (f.w && f.h) { img.width = f.w; img.height = f.h; }
+    return img;
+  }
+  function makeMedia(f, inCard) {
+    if (!f.video || reduce) return makeImg(f);
+    const v = document.createElement("video");
+    v.muted = true;
+    v.loop = true;
+    v.playsInline = true;
+    v.setAttribute("muted", "");
+    v.setAttribute("playsinline", "");
+    v.preload = inCard ? "metadata" : "auto";
+    if (f.src) v.poster = f.src;
+    v.addEventListener("error", () => { if (f.src) v.replaceWith(makeImg(f)); }, { once: true });
+    v.src = f.video;
+    if (inCard) videos.push(v); else v.autoplay = true;
+    return v;
+  }
+
+  const ROT = [-3, 2.5, -2, 3, -1.5, 2];
+  const gal = $("gallery");
+  CARTA.fotos.forEach((f, i) => {
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = "polaroid reveal";
+    if (f.w && f.h && f.w > f.h) card.classList.add("wide");
+    card.style.setProperty("--r", ROT[i % ROT.length] + "deg");
+    card.setAttribute("aria-label", "Ver foto" + (f.frase ? ": " + f.frase : ""));
+    const ph = document.createElement("span");
+    ph.className = "ph";
+    if (f.w && f.h) ph.style.aspectRatio = f.w + " / " + f.h;
+    ph.appendChild(makeMedia(f, true));
+    if (f.video && !reduce) {
+      const badge = document.createElement("span");
+      badge.className = "live";
+      badge.textContent = "LIVE";
+      ph.appendChild(badge);
+    }
+    const cap = document.createElement("span");
+    cap.className = "cap";
+    cap.textContent = f.frase || "";
+    card.append(ph, cap);
+    card.addEventListener("click", () => openLightbox(f));
+    gal.appendChild(card);
+  });
+  if (!CARTA.fotos.length) $("gallerySec").hidden = true;
+
+  const vio = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) e.target.play().catch(() => {}); else e.target.pause(); });
+  }, { threshold: 0.25 });
+  videos.forEach((v) => vio.observe(v));
+
+  // Foto grande
+  const lb = $("lightbox");
+  function openLightbox(f) {
+    const m = makeMedia(f, false);
+    $("lbMedia").replaceChildren(m);
+    if (m.tagName === "VIDEO") m.play().catch(() => {});
+    $("lbCap").textContent = f.frase || "";
+    lb.hidden = false;
+    void lb.offsetWidth;
+    lb.classList.add("on");
+    document.body.classList.add("locked");
+  }
+  function closeLightbox() {
+    lb.classList.remove("on");
+    document.body.classList.remove("locked");
+    setTimeout(() => { lb.hidden = true; $("lbMedia").replaceChildren(); }, 300);
+  }
+  lb.addEventListener("click", closeLightbox);
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !lb.hidden) closeLightbox(); });
+
+  // Contador
+  function parseDate(s) {
+    const m = /^(\d{4})-(\d{2})-(\d{2})(?:[T ](\d{2}):(\d{2}))?$/.exec(s || "");
+    return m ? new Date(+m[1], +m[2] - 1, +m[3], +(m[4] || 0), +(m[5] || 0)) : null;
+  }
+  function addMonths(date, n) {
+    const d = new Date(date.getFullYear(), date.getMonth() + n, 1, date.getHours(), date.getMinutes(), date.getSeconds());
+    const last = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+    d.setDate(Math.min(date.getDate(), last));
+    return d;
+  }
+  const LABELS = { y: ["año", "años"], mo: ["mes", "meses"], d: ["día", "días"], h: ["hora", "horas"], mi: ["minuto", "minutos"], s: ["segundo", "segundos"] };
+  const units = {};
+  document.querySelectorAll(".unit").forEach((u) => { units[u.dataset.u] = u; });
+  function setUnit(k, v) {
+    units[k].querySelector("b").textContent = v;
+    units[k].querySelector("span").textContent = LABELS[k][v === 1 ? 0 : 1];
+  }
+  const start = parseDate(CARTA.fechaInicio);
+  function tick() {
+    const now = new Date();
+    let months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+    if (addMonths(start, months) > now) months--;
+    let rest = Math.floor((now - addMonths(start, months)) / 1000);
+    const d = Math.floor(rest / 86400); rest -= d * 86400;
+    const h = Math.floor(rest / 3600); rest -= h * 3600;
+    const mi = Math.floor(rest / 60);
+    const years = Math.floor(months / 12);
+    units.y.hidden = years === 0;
+    setUnit("y", years);
+    setUnit("mo", months % 12);
+    setUnit("d", d);
+    setUnit("h", h);
+    setUnit("mi", mi);
+    setUnit("s", rest - mi * 60);
+    $("totalDays").textContent = Math.floor((now - start) / 864e5).toLocaleString("es-AR");
+  }
+  if (!start || start > new Date()) {
+    $("counterSec").hidden = true;
+  } else {
+    $("counterLead").textContent = CARTA.contadorTexto;
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  // Aparecer al bajar
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add("visible");
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.15, rootMargin: "0px 0px -30px 0px" });
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+  // Corazón final
+  $("heartBtn").addEventListener("click", () => {
+    burst(reduce ? 10 : 45);
+    const sec = $("secret");
+    if (CARTA.secreto && !sec.classList.contains("on")) {
+      sec.textContent = CARTA.secreto;
+      sec.classList.add("on");
+    }
+    if (navigator.vibrate) navigator.vibrate([30, 60, 30]);
+  });
+})();
+</script>
+</body>
+</html>
