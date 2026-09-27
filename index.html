@@ -406,7 +406,7 @@ button:active{scale:.96}
   <figure><div id="lbMedia"></div><figcaption id="lbCap"></figcaption></figure>
 </div>
 <button class="music paused" id="music" type="button" aria-label="Poner la música" hidden><span class="bars"><i></i><i></i><i></i><i></i></span></button>
-<audio id="audio" loop preload="auto"></audio>
+<audio id="audio" loop preload="metadata"></audio>
 
 <script>
 /* ============================ EDITÁ ACÁ ============================ */
@@ -422,8 +422,10 @@ const CARTA = {
     "Vivimos cosas buenas y malas, pero muchísimas más buenas e increíbles. Y siempre juntos, siempre pensando para adelante.",
     "Desde ese primer viaje, esa escapada que fue fantástica, hasta lugares increíbles como Aruba o el Viejo Molino. ¿Cómo no pensar en los próximos viajes?",
     "Pero hoy te extraño, y te extraño muchísimo. Te extraño a vos, a tu risa, a esos abrazos que me acomodan el alma cuando el día viene pesado.",
-    "Hay un momento en que sentís que lo tenés todo. Y porque sí, yo te veo y pienso: “lo tengo todo, ella me hace feliz”.",
+    "Y son esos los momentos en que decís: lo tengo todo. Tengo todo lo que necesito acá conmigo, tengo todo lo que siempre soñé delante de mis ojos.",
+    "Y sí, a mí me hacés feliz muy simple también:",
     "Me hace feliz un buen día, amor, un cómo fue tu día, un cómo estás. Esos son los detalles que me hacen feliz. Saber que voy a cocinarte, porque me encanta hacerlo. Me encanta pasar tiempo con vos.",
+    "Me hace feliz lo que siempre podemos ser y todo lo que podemos lograr juntos.",
     "Te amo."
   ],
   firma: "Braian",
@@ -444,7 +446,8 @@ const CARTA = {
   contadorTexto: "Desde aquel 3 de junio pasaron",
 
   // Música de fondo: suena cuando abre el sobre. Poné el mp3 en la carpeta "musica" con este nombre.
-  cancion: "musica/eres.mp3", // Eres, Café Tacvba
+  // Clair de Lune (Debussy), piano: Laurens Goedhart. Dominio público, vía Wikimedia Commons.
+  cancion: "musica/fondo.mp3",
 
   // Cierre
   cierreGrande: "Con vos la vida es mejor",
